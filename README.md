@@ -1,3 +1,5 @@
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE)
+[![MyGet tenant](https://img.shields.io/dotnet.myget/dotnet-coreclr/dt/Microsoft.DotNet.CoreCLR.svg)](https://packagist.org/packages/haogood/php-imap)
 
 ## Requirements
 - PHP >= 5.5.0
@@ -11,6 +13,9 @@ composer require haogood/php-imap
 ## Initialize
 ```php
 use IMAP\IMAPMailbox;
+$host = '{imap.gmail.com:993/imap/ssl}';
+$user = 'user@gmail.com';
+$pwd = '******';
 $mailbox = new IMAPMailbox($host, $user, $pwd);
 ```
 
