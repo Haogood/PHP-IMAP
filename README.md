@@ -58,4 +58,4 @@ foreach ($emails as $email) {
 
 License
 ------------
-`PHP_IMAP` is licensed under [The MIT License (MIT)](LICENSE).
+`haogood/php-imap` is licensed under [The MIT License (MIT)](LICENSE).
