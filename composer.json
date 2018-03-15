@@ -6,12 +6,7 @@
         "imap",
         "pop3",
         "mailbox",
-        "email structure"
-        "receive emails",
-        "fetch emails",
-        "download email attachments",
-        "parse email"
-        "email contents decode"
+        "receive emails"
     ],
     "type": "library",
     "license": "MIT",
