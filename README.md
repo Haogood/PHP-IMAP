@@ -1,4 +1,4 @@
-[![Author](https://img.shields.io/badge/author-Benny-blue.svg?longCache=true&style=flat-square)](https://www.linkedin.com/in/benny-sun-%E5%AD%AB%E8%B1%AA-65663b100/)
+[![Author](https://img.shields.io/badge/author-haogood-blue.svg?longCache=true&style=flat-square)](https://www.linkedin.com/in/benny-sun-%E5%AD%AB%E8%B1%AA-65663b100/)
 [![Release](https://img.shields.io/badge/release-v1.0.0-blue.svg?longCache=true&style=flat-square)](https://github.com/Haogood/PHP-IMAP/tree/v1.0.0)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 [![Size](https://img.shields.io/badge/size-19k-brightgreen.svg?longCache=true&style=flat-square)](https://github.com/Haogood/PHP-IMAP/archive/v1.0.0.zip)
