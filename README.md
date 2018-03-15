@@ -1,6 +1,16 @@
 
+## Requirements
+- PHP >= 5.5.0
+- IMAP PHP Extension
+
+## Installation
+```
+composer require haogood/php-imap
+```
+
 ## Initialize
 ```php
+use IMAP\IMAPMailbox;
 $mailbox = new IMAPMailbox($host, $user, $pwd);
 ```
 
