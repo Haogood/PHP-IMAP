@@ -40,7 +40,7 @@ foreach ($emails as $email) {
     $from = $headerinfo->from->mailbox.'@'.$headerinfo->from->host;
 
     // Timestamp
-    $timstamp = $headerinfo->udate
+    $timstamp = $headerinfo->udate;
 
     // Contents
     $contents = $email->getBody();
