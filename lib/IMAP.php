@@ -22,12 +22,12 @@ Class IMAP
                 return $string;
 
             case 3: // BASE-64
-                return base64_decode($string);
+                $string = base64_decode($string);
+                return mb_convert_encoding($string, 'UTF-8', $charset);
 
             case 4: // QUOTED-PRINTABLE
                 $string = quoted_printable_decode($string);
-                $string = mb_convert_encoding($string, 'UTF-8', $charset);
-                return $string;
+                return mb_convert_encoding($string, 'UTF-8', $charset);;
         }
         throw new \Exception('decode paremeter not correct.');
     }
