@@ -10,10 +10,12 @@ Class IMAPMessage
 
     private $stream;
     private $msgno;
+    private $parts;
 
     public function __construct(IMAPMailbox $mailbox, $msgno) {
         $this->stream = $mailbox->getStream();
         $this->msgno = $msgno;
+        $this->parts = $this->fetchParts();
     }
 
     public function getMsgno() {
@@ -21,16 +23,26 @@ Class IMAPMessage
     }
 
     public function getBody() {
-        $parts = $this->fetchParts();
         $body = NULL;
-        foreach ($parts as $section => $part) {
+
+        foreach ($this->parts as $section => $part) {
+            $isFound = FALSE;
             if (!$part->ifdisposition && $part->subtype == 'HTML') {
-                $body = $this->fetchBody($section);
-                $charset = IMAP::getAttribute($part->parameters, 'charset');
-                $encoding = $part->encoding;
+                $isFound = TRUE;
                 break;
             }
         }
+        // If no HTML, find plain text.
+        if (!$isFound) {
+            foreach ($this->parts as $section => $part) {
+                if (!$part->ifdisposition && $part->subtype == 'PLAIN') {
+                    break;
+                }
+            }
+        }
+        $body = $this->fetchBody($section);
+        $charset = IMAP::getAttribute($part->parameters, 'charset');
+        $encoding = $part->encoding;
         !(NULL === $body) && $body = IMAP::Decode($body, $encoding, $charset);
         return $body;
     }
@@ -95,6 +107,18 @@ Class IMAPMessage
 
     public function fetchStructure() {
         return imap_fetchstructure($this->stream, $this->msgno);
+    }
+
+    public function hasAttachments() {
+        $result = FALSE;
+        foreach ($this->parts as $part) {
+            if ($part->ifdisposition && 
+                $part->disposition == 'attachment') {
+                    $result = TRUE;
+                    break;
+                }
+        }
+        return $result;
     }
 
     public function getAttachments($IS_INLINE_ONLY = FALSE) {
